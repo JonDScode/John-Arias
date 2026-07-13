@@ -232,6 +232,25 @@ h1, h2, h3 {
   }
 }
 
+/* ---------- Video ---------- */
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: var(--gutter);
+  align-items: start;
+}
+
+.video-grid video {
+  width: 100%;
+  background: var(--bg-raised);
+}
+
+@media (max-width: 720px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- About ---------- */
 .about {
   display: grid;
