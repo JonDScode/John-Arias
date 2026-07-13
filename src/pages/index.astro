@@ -1,15 +1,17 @@
 ---
 import Base from "../layouts/Base.astro";
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 const works = [
-  { src: "/photos/ig-01.jpg", title: "Bodas — Ceremonia", year: "2026", ratio: "4 / 5", size: "" },
-  { src: "/photos/ig-09.jpg", title: "Retratos — Sesión exterior", year: "2025", ratio: "2 / 3", size: "" },
-  { src: "/photos/ig-04.jpg", title: "Quinceañeras — Jessy", year: "2026", ratio: "3 / 4", size: "narrow" },
-  { src: "/photos/ig-12.jpg", title: "Eventos — Fiesta de XV", year: "2025", ratio: "3 / 4", size: "narrow" },
-  { src: "/photos/ig-06.jpg", title: "Quinceañeras — Isabel Sofía", year: "2025", ratio: "3 / 4", size: "narrow" },
-  { src: "/photos/ig-05.jpg", title: "Sesión pre-quince — Sofía", year: "2026", ratio: "4 / 5", size: "narrow" },
-  { src: "/photos/ig-07.jpg", title: "Detrás de cámara — Comunión", year: "2026", ratio: "3 / 4", size: "narrow" },
-  { src: "/photos/ig-11.jpg", title: "Retrato urbano — 18 años", year: "2025", ratio: "3 / 4", size: "narrow" },
+  { src: `${base}/photos/ig-01.jpg`, title: "Bodas — Ceremonia", year: "2026", ratio: "4 / 5", size: "" },
+  { src: `${base}/photos/ig-09.jpg`, title: "Retratos — Sesión exterior", year: "2025", ratio: "2 / 3", size: "" },
+  { src: `${base}/photos/ig-04.jpg`, title: "Quinceañeras — Jessy", year: "2026", ratio: "3 / 4", size: "narrow" },
+  { src: `${base}/photos/ig-12.jpg`, title: "Eventos — Fiesta de XV", year: "2025", ratio: "3 / 4", size: "narrow" },
+  { src: `${base}/photos/ig-06.jpg`, title: "Quinceañeras — Isabel Sofía", year: "2025", ratio: "3 / 4", size: "narrow" },
+  { src: `${base}/photos/ig-05.jpg`, title: "Sesión pre-quince — Sofía", year: "2026", ratio: "4 / 5", size: "narrow" },
+  { src: `${base}/photos/ig-07.jpg`, title: "Detrás de cámara — Comunión", year: "2026", ratio: "3 / 4", size: "narrow" },
+  { src: `${base}/photos/ig-11.jpg`, title: "Retrato urbano — 18 años", year: "2025", ratio: "3 / 4", size: "narrow" },
 ];
 ---
 
