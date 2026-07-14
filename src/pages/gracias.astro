@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Base title="Gracias — John Arias">
+  <section class="hero wrap">
+    <div class="hero-inner">
+      <p class="eyebrow">Solicitud enviada</p>
+      <h1>¡Gracias por <em>escribirme</em>!</h1>
+      <p class="lede">
+        He recibido tu mensaje y te responderé lo antes posible.
+        <a href={`${base}/`} style="color: var(--accent); text-decoration: underline;">Volver al inicio</a>
+      </p>
+    </div>
+  </section>
+</Base>

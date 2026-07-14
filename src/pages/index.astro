@@ -21,25 +21,27 @@ const works = [
 
 <Base title="John Arias — Fotografía y Video">
   <section class="hero wrap">
-    <p class="eyebrow">Fotografía y video — Vic, Barcelona</p>
-    <h1>Recuerdos que duran <em>para siempre</em></h1>
-    <p class="lede">
-      Bodas, quinceañeras, retratos, producto y eventos. Fotografía y video
-      para congelar los momentos que se viven una sola vez.
-    </p>
-    <p class="scroll-hint">Desliza para ver el trabajo ↓</p>
+    <div class="hero-inner">
+      <p class="eyebrow">Fotografía y video — Vic, Barcelona</p>
+      <h1>Recuerdos que duran <em>para siempre</em></h1>
+      <p class="lede">
+        Bodas, quinceañeras, retratos, producto y eventos. Fotografía y video
+        para congelar los momentos que se viven una sola vez.
+      </p>
+      <p class="scroll-hint">Desliza para ver el trabajo ↓</p>
+    </div>
   </section>
 
   <section class="section" id="trabajo">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <h2>Trabajo seleccionado</h2>
         <p class="eyebrow">2024 — 2026</p>
       </div>
       <div class="work-grid">
         {
           works.map((w) => (
-            <a class={`work-item ${w.size}`} href="#trabajo">
+            <a class={`work-item reveal ${w.size}`} href="#trabajo">
               <figure>
                 <img
                   src={w.src}
@@ -61,19 +63,19 @@ const works = [
 
   <section class="section" id="video">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <h2>Video</h2>
         <p class="eyebrow">Contenido audiovisual</p>
       </div>
       <div class="video-grid">
-        <video src={`${base}/videos/reel-01.mp4`} controls preload="metadata" playsinline></video>
-        <video src={`${base}/videos/reel-02.mp4`} controls preload="metadata" playsinline></video>
+        <video class="reveal" src={`${base}/videos/reel-01.mp4`} controls preload="metadata" playsinline></video>
+        <video class="reveal" style="--reveal-delay: 120ms" src={`${base}/videos/reel-02.mp4`} controls preload="metadata" playsinline></video>
       </div>
     </div>
   </section>
 
   <section class="section" id="sobre-mi">
-    <div class="wrap about">
+    <div class="wrap about reveal">
       <p class="eyebrow">Sobre mí</p>
       <div>
         <p class="bio">
@@ -90,12 +92,57 @@ const works = [
   </section>
 
   <section class="section contact" id="contacto">
-    <div class="wrap">
+    <div class="wrap reveal">
       <p class="eyebrow">Contacto</p>
       <h2>Hablemos de tu próxima celebración</h2>
-      <a class="email" href="https://www.instagram.com/johnarias80/" target="_blank" rel="noopener">
-        @johnarias80 en Instagram
-      </a>
+
+      <form
+        class="lead-form"
+        action="https://formsubmit.co/jonnathanospinam@gmail.com"
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="Nueva solicitud desde el portafolio" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://jondscode.github.io/John-Arias/gracias/" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="form-row">
+          <label>
+            Nombre
+            <input required type="text" name="nombre" placeholder="Tu nombre" />
+          </label>
+          <label>
+            Email
+            <input required type="email" name="email" placeholder="tu@correo.com" />
+          </label>
+        </div>
+        <div class="form-row">
+          <label>
+            Servicio
+            <select name="servicio">
+              <option>Bodas</option>
+              <option>Quinceañeras</option>
+              <option>Retratos</option>
+              <option>Producto / Gastronomía</option>
+              <option>Eventos</option>
+              <option>Otro</option>
+            </select>
+          </label>
+          <label>
+            Fecha del evento (opcional)
+            <input type="date" name="fecha" />
+          </label>
+        </div>
+        <label>
+          Cuéntame tu idea
+          <textarea name="mensaje" rows="4" placeholder="Qué celebras, dónde, qué tienes en mente..."></textarea>
+        </label>
+        <button type="submit">Enviar solicitud</button>
+        <p class="form-note">
+          También puedes escribir directo por Instagram:
+          <a href="https://www.instagram.com/johnarias80/" target="_blank" rel="noopener" style="color: var(--accent);">@johnarias80</a>
+        </p>
+      </form>
     </div>
   </section>
 </Base>
