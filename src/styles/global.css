@@ -232,6 +232,47 @@ h1, h2, h3 {
   }
 }
 
+/* ---------- Filmstrip (carrusel) ---------- */
+.filmstrip {
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  background: var(--bg-raised);
+}
+
+.filmstrip-track {
+  display: flex;
+  gap: 4px;
+  width: max-content;
+}
+
+.filmstrip img {
+  height: clamp(120px, 18vw, 220px);
+  width: auto;
+  display: block;
+  filter: grayscale(35%);
+  transition: filter 0.3s ease;
+}
+
+.filmstrip img:hover {
+  filter: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .filmstrip-track {
+    animation: filmstrip-scroll 60s linear infinite;
+  }
+
+  .filmstrip:hover .filmstrip-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes filmstrip-scroll {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
 /* ---------- Video ---------- */
 .video-grid {
   display: grid;
@@ -240,9 +281,84 @@ h1, h2, h3 {
   align-items: start;
 }
 
+.video-grid figure {
+  margin: 0;
+}
+
 .video-grid video {
   width: 100%;
   background: var(--bg-raised);
+}
+
+.video-grid figcaption {
+  margin-top: 0.9rem;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Obturador ---------- */
+.work-item figure {
+  position: relative;
+}
+
+.shutter {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.shutter .blade {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50.5%;
+  background: #000;
+  transform: scaleY(0);
+}
+
+.shutter .blade.top {
+  top: 0;
+  transform-origin: top;
+}
+
+.shutter .blade.bottom {
+  bottom: 0;
+  transform-origin: bottom;
+}
+
+.shutter .flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+}
+
+.shutter.firing {
+  opacity: 1;
+}
+
+.shutter.firing .blade {
+  animation: shutter-blade 0.55s cubic-bezier(0.6, 0, 0.4, 1);
+}
+
+.shutter.firing .flash {
+  animation: shutter-flash 0.55s ease;
+}
+
+@keyframes shutter-blade {
+  0% { transform: scaleY(0); }
+  30% { transform: scaleY(1); }
+  55% { transform: scaleY(1); }
+  100% { transform: scaleY(0); }
+}
+
+@keyframes shutter-flash {
+  0%, 40% { opacity: 0; }
+  55% { opacity: 0.9; }
+  100% { opacity: 0; }
 }
 
 @media (max-width: 720px) {

@@ -32,11 +32,48 @@ const works = [
     </div>
   </section>
 
+  <div class="filmstrip" aria-hidden="true">
+    <div class="filmstrip-track">
+      {
+        [...works, ...works].map((w) => (
+          <img src={w.src} alt="" loading="lazy" />
+        ))
+      }
+    </div>
+  </div>
+
+  <section class="section" id="video">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Video</h2>
+        <p class="eyebrow">Contenido audiovisual</p>
+      </div>
+      <div class="video-grid">
+        <figure class="reveal">
+          <video src={`${base}/videos/reel-01.mp4`} controls preload="metadata" playsinline></video>
+          <figcaption>Comunión — Vic</figcaption>
+        </figure>
+        <figure class="reveal" style="--reveal-delay: 120ms">
+          <video
+            src={`${base}/videos/reel-02.mp4`}
+            data-scroll-play
+            muted
+            loop
+            controls
+            preload="metadata"
+            playsinline
+          ></video>
+          <figcaption>Fiesta de XV — se reproduce al llegar aquí</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="trabajo">
     <div class="wrap">
       <div class="section-head reveal">
         <h2>Trabajo seleccionado</h2>
-        <p class="eyebrow">2024 — 2026</p>
+        <p class="eyebrow">2024 — 2026 · Haz clic en una foto 📸</p>
       </div>
       <div class="work-grid">
         {
@@ -61,27 +98,12 @@ const works = [
     </div>
   </section>
 
-  <section class="section" id="video">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <h2>Video</h2>
-        <p class="eyebrow">Contenido audiovisual</p>
-      </div>
-      <div class="video-grid">
-        <video class="reveal" src={`${base}/videos/reel-01.mp4`} controls preload="metadata" playsinline></video>
-        <video class="reveal" style="--reveal-delay: 120ms" src={`${base}/videos/reel-02.mp4`} controls preload="metadata" playsinline></video>
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="sobre-mi">
     <div class="wrap about reveal">
       <p class="eyebrow">Sobre mí</p>
       <div>
         <p class="bio">
-          Soy John Arias, fotógrafo y creador de contenido audiovisual.
-          Acompaño bodas, quinces y celebraciones
-          <em>congelando recuerdos</em> que duran para siempre.
+          Soy John Arias, fotógrafo y creador de contenido audiovisual. Acompaño bodas, quinces y celebraciones <em>creando recuerdos</em> que duran para siempre.
         </p>
         <div class="meta">
           <span>Producto · Retratos · Bodas · Eventos</span>

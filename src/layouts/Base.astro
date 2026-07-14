@@ -39,8 +39,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <div class="wrap">
         <a href={`${base}/`} class="wordmark">John Arias <span>— Fotografía</span></a>
         <nav class="site-nav">
-          <a href="#trabajo">Trabajo</a>
           <a href="#video">Video</a>
+          <a href="#trabajo">Trabajo</a>
           <a href="#sobre-mi">Sobre mí</a>
           <a href="#contacto">Contacto</a>
         </nav>
@@ -80,6 +80,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           });
         });
 
+        // Video que se reproduce solo al entrar en pantalla (y se pausa al salir)
+        const scrollVideos = document.querySelectorAll("video[data-scroll-play]");
+        if (scrollVideos.length) {
+          const vio = new IntersectionObserver(
+            (entries) => {
+              for (const e of entries) {
+                const v = e.target;
+                if (e.isIntersecting) {
+                  v.muted = true;
+                  v.play().catch(() => {});
+                } else {
+                  v.pause();
+                }
+              }
+            },
+            { threshold: 0.4 },
+          );
+          scrollVideos.forEach((v) => vio.observe(v));
+        }
+
         // Parallax sutil del hero: se desplaza y desvanece al hacer scroll
         const hero = document.querySelector(".hero-inner");
         if (hero) {
@@ -100,6 +120,58 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           );
         }
       }
+
+      // Obturador: clic en una foto = tomar una foto (animación + sonido)
+      let actx;
+      function shutterSound() {
+        try {
+          actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+          const click = (t, dur, freq, vol) => {
+            const buf = actx.createBuffer(1, Math.floor(actx.sampleRate * dur), actx.sampleRate);
+            const d = buf.getChannelData(0);
+            for (let i = 0; i < d.length; i++) {
+              d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, 2);
+            }
+            const src = actx.createBufferSource();
+            src.buffer = buf;
+            const f = actx.createBiquadFilter();
+            f.type = "bandpass";
+            f.frequency.value = freq;
+            f.Q.value = 1.1;
+            const g = actx.createGain();
+            g.gain.value = vol;
+            src.connect(f);
+            f.connect(g);
+            g.connect(actx.destination);
+            src.start(t);
+          };
+          const t0 = actx.currentTime;
+          click(t0, 0.03, 2600, 0.5); // espejo sube
+          click(t0 + 0.1, 0.06, 1300, 0.8); // obturador
+        } catch (e) {
+          /* sin audio, la animación sigue */
+        }
+      }
+
+      document.querySelectorAll(".work-item").forEach((item) => {
+        item.addEventListener("click", (ev) => {
+          ev.preventDefault();
+          const fig = item.querySelector("figure");
+          let sh = fig.querySelector(".shutter");
+          if (!sh) {
+            sh = document.createElement("div");
+            sh.className = "shutter";
+            sh.innerHTML =
+              '<div class="blade top"></div><div class="blade bottom"></div><div class="flash"></div>';
+            fig.appendChild(sh);
+          }
+          sh.classList.remove("firing");
+          void sh.offsetWidth; // reinicia la animación
+          sh.classList.add("firing");
+          shutterSound();
+          setTimeout(() => sh.classList.remove("firing"), 650);
+        });
+      });
     </script>
   </body>
 </html>
