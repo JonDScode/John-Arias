@@ -1,28 +1,56 @@
 ---
 import Base from "../layouts/Base.astro";
+import { site } from "../config";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
+// alt descriptivos: son los que lee Google y los lectores de pantalla
 const works = [
-  { src: `${base}/photos/ig-01.jpg`, title: "Bodas — Ceremonia", year: "2026", ratio: "4 / 5", size: "" },
-  { src: `${base}/photos/ig-09.jpg`, title: "Retratos — Sesión exterior", year: "2025", ratio: "2 / 3", size: "" },
-  { src: `${base}/photos/ig-04.jpg`, title: "Quinceañeras — Jessy", year: "2026", ratio: "3 / 4", size: "narrow" },
-  { src: `${base}/photos/ig-12.jpg`, title: "Eventos — Fiesta de XV", year: "2025", ratio: "3 / 4", size: "narrow" },
-  { src: `${base}/photos/ig-06.jpg`, title: "Quinceañeras — Isabel Sofía", year: "2025", ratio: "3 / 4", size: "narrow" },
-  { src: `${base}/photos/food-burger.jpg`, title: "Gastronomía — Carta de restaurante", year: "2026", ratio: "4 / 5", size: "" },
-  { src: `${base}/photos/chef-plato.jpg`, title: "Gastronomía — El chef y su plato", year: "2026", ratio: "4 / 5", size: "" },
-  { src: `${base}/photos/food-helado.jpg`, title: "Gastronomía — Postres", year: "2026", ratio: "3 / 4", size: "narrow" },
-  { src: `${base}/photos/producto-set.jpg`, title: "Producto — Detrás de cámara", year: "2026", ratio: "3 / 4", size: "narrow" },
-  { src: `${base}/photos/food-pollo.jpg`, title: "Gastronomía — Detalle de carta", year: "2026", ratio: "3 / 4", size: "narrow" },
-  { src: `${base}/photos/xv-azul.jpg`, title: "Quinceañeras — Sesión en jardín", year: "2026", ratio: "4 / 5", size: "" },
-  { src: `${base}/photos/ig-11.jpg`, title: "Retrato urbano — 18 años", year: "2025", ratio: "4 / 5", size: "" },
+  { src: "boda-ramo.jpg", title: "Bodas — El ramo", year: "2026", ratio: "2 / 3", size: "",
+    alt: "Ramo de novia con calas blancas y flores azules, con medallón conmemorativo, en una boda en Vic" },
+  { src: "boda-novia.jpg", title: "Bodas — La novia", year: "2026", ratio: "2 / 3", size: "",
+    alt: "Retrato de novia con velo y capa de tul en el jardín de una finca de bodas en Barcelona" },
+  { src: "boda-confeti.jpg", title: "Bodas — La salida", year: "2026", ratio: "3 / 2", size: "wide",
+    alt: "Novios saliendo entre confeti y arroz rodeados de invitados tras la ceremonia" },
+  { src: "evento-montaje.jpg", title: "Eventos — El montaje", year: "2026", ratio: "1 / 1", size: "narrow",
+    alt: "Montaje decorativo de fiesta de quinceañera con pared de lentejuelas y globos azules" },
+  { src: "boda-emocion.jpg", title: "Bodas — La emoción", year: "2026", ratio: "2 / 3", size: "narrow",
+    alt: "Novia emocionada sosteniendo una fotografía familiar durante la ceremonia, en blanco y negro" },
+  { src: "boda-anillos.jpg", title: "Bodas — Los anillos", year: "2026", ratio: "9 / 10", size: "narrow",
+    alt: "Intercambio de anillos entre los novios bajo el arco floral de la ceremonia" },
+  { src: "boda-novio.jpg", title: "Bodas — El novio", year: "2026", ratio: "2 / 3", size: "narrow",
+    alt: "Retrato en blanco y negro del novio esperando el inicio de la ceremonia" },
+  { src: "deco-centro.jpg", title: "Eventos — Decoración", year: "2026", ratio: "5 / 8", size: "",
+    alt: "Centro de mesa con rosas azules y hortensias en una celebración de quince años" },
+  { src: "boda-arco.jpg", title: "Bodas — El detalle", year: "2026", ratio: "2 / 3", size: "",
+    alt: "Arco floral decorado con cintas blancas en una ceremonia de boda al aire libre" },
+  { src: "boda-pareja.jpg", title: "Bodas — Los novios", year: "2026", ratio: "3 / 2", size: "wide",
+    alt: "Los novios sentados juntos durante la ceremonia civil en el jardín" },
+  { src: "evento-catering.jpg", title: "Gastronomía — Catering", year: "2026", ratio: "2 / 3", size: "narrow",
+    alt: "Bandeja de miniburgers y aperitivos de jamón en el catering de una celebración" },
+  { src: "food-burger.jpg", title: "Gastronomía — Carta", year: "2026", ratio: "3 / 5", size: "",
+    alt: "Hamburguesa gourmet con guacamole y nachos fotografiada para la carta de un restaurante" },
+  { src: "chef-plato.jpg", title: "Gastronomía — El chef", year: "2026", ratio: "2 / 3", size: "",
+    alt: "Chef presentando un plato de salmón con aguacate en la cocina de un restaurante" },
+  { src: "evento-postres.jpg", title: "Eventos — Mesa dulce", year: "2026", ratio: "3 / 2", size: "wide",
+    alt: "Mesa dulce con pasteles y dulces decorados en tonos azules para una fiesta de quince" },
+  { src: "producto-set.jpg", title: "Producto — El set", year: "2026", ratio: "4 / 7", size: "narrow",
+    alt: "Set de fotografía de producto con softbox y cámaras iluminando un plato de restaurante" },
+];
+
+const servicios = [
+  { nombre: "Bodas", texto: "Cobertura completa del día: preparativos, ceremonia, banquete y fiesta. Fotografía y vídeo, con reportaje entregado en galería online privada." },
+  { nombre: "Quinceañeras y comuniones", texto: "Sesión previa y cobertura del evento. Reportajes pensados para que la protagonista disfrute del día sin posar de más." },
+  { nombre: "Retratos", texto: "Sesiones individuales, de pareja o familiares en exteriores de Vic y alrededores, o en estudio." },
+  { nombre: "Gastronomía y producto", texto: "Fotografía para cartas de restaurante, redes sociales y catálogos. Iluminación de estudio adaptada a cada plato o producto." },
+  { nombre: "Vídeo y contenido", texto: "Reels, vídeo de evento y edición para redes. Contenido audiovisual listo para publicar." },
 ];
 ---
 
-<Base title="John Arias — Fotografía y Video">
+<Base title="Fotógrafo en Vic, Barcelona — John Arias | Bodas, Quinceañeras y Eventos">
   <section class="hero wrap">
     <div class="hero-inner">
-      <p class="eyebrow">Fotografía y video — Vic, Barcelona</p>
+      <p class="eyebrow">Fotografía y video — {site.ciudad}, {site.provincia}</p>
       <h1>Recuerdos que duran <em>para siempre</em></h1>
       <p class="lede">
         Bodas, quinceañeras, retratos, producto y eventos. Fotografía y video
@@ -36,7 +64,7 @@ const works = [
     <div class="filmstrip-track">
       {
         [...works, ...works].map((w) => (
-          <img src={w.src} alt="" loading="lazy" />
+          <img src={`${base}/photos/${w.src}`} alt="" loading="lazy" />
         ))
       }
     </div>
@@ -81,8 +109,8 @@ const works = [
             <a class={`work-item reveal ${w.size}`} href="#trabajo">
               <figure>
                 <img
-                  src={w.src}
-                  alt={w.title}
+                  src={`${base}/photos/${w.src}`}
+                  alt={w.alt}
                   loading="lazy"
                   style={`--ratio: ${w.ratio}`}
                 />
@@ -98,16 +126,35 @@ const works = [
     </div>
   </section>
 
+  <section class="section" id="servicios">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Servicios</h2>
+        <p class="eyebrow">Vic · Osona · Barcelona</p>
+      </div>
+      <div class="servicios-grid">
+        {
+          servicios.map((s, i) => (
+            <article class="reveal" style={`--reveal-delay: ${(i % 3) * 90}ms`}>
+              <h3>{s.nombre}</h3>
+              <p>{s.texto}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="sobre-mi">
     <div class="wrap about reveal">
       <p class="eyebrow">Sobre mí</p>
       <div>
         <p class="bio">
-          Soy John Arias, fotógrafo y creador de contenido audiovisual. Acompaño bodas, quinces y celebraciones <em>creando recuerdos</em> que duran para siempre.
+          Soy John Arias, fotógrafo y creador de contenido audiovisual en {site.ciudad}. Acompaño bodas, quinces y celebraciones <em>creando recuerdos</em> que duran para siempre.
         </p>
         <div class="meta">
           <span>Producto · Retratos · Bodas · Eventos</span>
-          <span>Vic, Barcelona — disponible para desplazarse</span>
+          <span>{site.ciudad}, {site.provincia} — disponible para desplazarse</span>
         </div>
       </div>
     </div>
@@ -118,14 +165,22 @@ const works = [
       <p class="eyebrow">Contacto</p>
       <h2>Hablemos de tu próxima celebración</h2>
 
+      <p class="contact-nap">
+        <a href={`tel:${site.telefonoLink}`}>{site.telefono}</a>
+        <span aria-hidden="true">·</span>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <span aria-hidden="true">·</span>
+        <span>{site.ciudad}, {site.provincia}</span>
+      </p>
+
       <form
         class="lead-form"
-        action="https://formsubmit.co/jonnathanospinam@gmail.com"
+        action={`https://formsubmit.co/${site.email}`}
         method="POST"
       >
-        <input type="hidden" name="_subject" value="Nueva solicitud desde el portafolio" />
+        <input type="hidden" name="_subject" value="Nueva solicitud desde la web" />
         <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_next" value="https://jondscode.github.io/John-Arias/gracias/" />
+        <input type="hidden" name="_next" value={`${site.url}${site.base}/gracias/`} />
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
         <div class="form-row">
@@ -144,9 +199,10 @@ const works = [
             <select name="servicio">
               <option>Bodas</option>
               <option>Quinceañeras</option>
+              <option>Comuniones</option>
               <option>Retratos</option>
-              <option>Producto / Gastronomía</option>
-              <option>Eventos</option>
+              <option>Gastronomía / Producto</option>
+              <option>Vídeo</option>
               <option>Otro</option>
             </select>
           </label>
@@ -161,8 +217,10 @@ const works = [
         </label>
         <button type="submit">Enviar solicitud</button>
         <p class="form-note">
-          También puedes escribir directo por Instagram:
-          <a href="https://www.instagram.com/johnarias80/" target="_blank" rel="noopener" style="color: var(--accent);">@johnarias80</a>
+          También puedes escribir directo por
+          <a href={site.instagram} target="_blank" rel="noopener" style="color: var(--accent);">Instagram</a>
+          o ver las
+          <a href={site.galerias} target="_blank" rel="noopener" style="color: var(--accent);">galerías de clientes</a>.
         </p>
       </form>
     </div>

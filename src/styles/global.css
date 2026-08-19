@@ -437,6 +437,50 @@ h1, h2, h3 {
   }
 }
 
+/* ---------- Servicios ---------- */
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--gutter);
+}
+
+.servicios-grid article {
+  border-top: 1px solid var(--line);
+  padding-top: 1.4rem;
+}
+
+.servicios-grid h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.servicios-grid p {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  max-width: 38ch;
+}
+
+/* ---------- NAP contacto ---------- */
+.contact-nap {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.contact-nap a {
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.contact-nap a:hover {
+  border-color: var(--accent);
+}
+
 /* ---------- Lead form ---------- */
 .lead-form {
   max-width: 560px;
