@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jondscode.github.io/John-Arias/sitemap.xml
+Sitemap: https://johnarias.com/sitemap.xml

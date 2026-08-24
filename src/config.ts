@@ -5,9 +5,8 @@
 export const site = {
   name: "John Arias | Fotografía y Video",
   shortName: "John Arias",
-  // Al migrar al dominio propio: cambiar url y poner base en "" (y en astro.config.mjs)
-  url: "https://jondscode.github.io",
-  base: "/John-Arias",
+  url: "https://johnarias.com",
+  base: "",
 
   // Cambiar a false cuando el sitio esté listo para aparecer en Google.
   // Mientras sea true, ningún buscador indexará la página.
