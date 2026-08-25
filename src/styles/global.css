@@ -85,7 +85,7 @@ h1, h2, h3 {
   align-items: center;
   justify-content: space-between;
   gap: 1.25rem;
-  height: 4.25rem;
+  height: 5.25rem;
 }
 
 .wordmark {
@@ -95,14 +95,14 @@ h1, h2, h3 {
 }
 
 .wordmark img {
-  height: 46px;
+  height: 68px;
   width: auto;
   display: block;
 }
 
 @media (max-width: 720px) {
   .wordmark img {
-    height: 34px;
+    height: 44px;
   }
 }
 
@@ -144,11 +144,11 @@ h1, h2, h3 {
   min-height: 100svh;
   display: grid;
   align-content: center;
-  padding-top: 4.25rem;
+  padding-top: 5.25rem;
 }
 
 .hero h1 {
-  font-size: clamp(3rem, 11vw, 8.5rem);
+  font-size: clamp(2.5rem, 8vw, 6.2rem);
   max-width: 12ch;
 }
 
@@ -286,10 +286,19 @@ h1, h2, h3 {
 /* ---------- Video ---------- */
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 330px));
-  justify-content: center;
+  grid-template-columns: repeat(12, 1fr);
   gap: var(--gutter);
   align-items: start;
+}
+
+/* uno arriba a la izquierda, el otro descolgado a la derecha */
+.video-grid figure:first-of-type {
+  grid-column: 2 / span 4;
+}
+
+.video-grid figure:last-of-type {
+  grid-column: 8 / span 4;
+  margin-top: clamp(2.5rem, 9vw, 7rem);
 }
 
 .video-grid figure {
@@ -382,6 +391,12 @@ h1, h2, h3 {
 @media (max-width: 720px) {
   .video-grid {
     grid-template-columns: 1fr;
+  }
+
+  .video-grid figure:first-of-type,
+  .video-grid figure:last-of-type {
+    grid-column: 1 / -1;
+    margin-top: 0;
   }
 }
 
