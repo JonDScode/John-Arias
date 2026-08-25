@@ -85,7 +85,7 @@ h1, h2, h3 {
   align-items: center;
   justify-content: space-between;
   gap: 1.25rem;
-  height: 5.25rem;
+  height: 6rem;
 }
 
 .wordmark {
@@ -95,14 +95,14 @@ h1, h2, h3 {
 }
 
 .wordmark img {
-  height: 68px;
+  height: 84px;
   width: auto;
   display: block;
 }
 
 @media (max-width: 720px) {
   .wordmark img {
-    height: 44px;
+    height: 52px;
   }
 }
 
@@ -141,10 +141,11 @@ h1, h2, h3 {
 
 /* ---------- Hero ---------- */
 .hero {
-  min-height: 100svh;
+  min-height: 68svh;
   display: grid;
   align-content: center;
-  padding-top: 5.25rem;
+  padding-top: 6rem;
+  padding-bottom: 2rem;
 }
 
 .hero h1 {
@@ -165,7 +166,7 @@ h1, h2, h3 {
 }
 
 .hero .scroll-hint {
-  margin-top: 4rem;
+  margin-top: 2.25rem;
   font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
