@@ -140,6 +140,12 @@ h1, h2, h3 {
 }
 
 /* ---------- Hero ---------- */
+.hero .eyebrow {
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  letter-spacing: 0.18em;
+  color: var(--ink);
+}
+
 .hero {
   min-height: 68svh;
   display: grid;
@@ -149,7 +155,7 @@ h1, h2, h3 {
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 8vw, 6.2rem);
+  font-size: clamp(2.1rem, 5.6vw, 4.4rem);
   max-width: 12ch;
 }
 
