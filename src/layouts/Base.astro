@@ -94,7 +94,9 @@ const schema = {
   <body>
     <header class="site-header">
       <div class="wrap">
-        <a href={`${base}/`} class="wordmark">John Arias <span>— Fotografía</span></a>
+        <a href={`${base}/`} class="wordmark" aria-label="John Arias — Fotografía y Video">
+          <img src={`${base}/logo.png`} alt="John Arias" width="800" height="450" />
+        </a>
         <nav class="site-nav">
           <a href="#video">Video</a>
           <a href="#trabajo">Trabajo</a>

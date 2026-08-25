@@ -89,15 +89,20 @@ h1, h2, h3 {
 }
 
 .wordmark {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.wordmark img {
+  height: 46px;
+  width: auto;
+  display: block;
 }
 
 @media (max-width: 720px) {
-  .wordmark {
-    font-size: 1.1rem;
+  .wordmark img {
+    height: 34px;
   }
 }
 
@@ -124,10 +129,6 @@ h1, h2, h3 {
 }
 
 @media (max-width: 720px) {
-  .wordmark span {
-    display: none;
-  }
-
   .site-nav {
     gap: 0.7rem;
   }

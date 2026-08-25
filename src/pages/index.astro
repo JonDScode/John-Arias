@@ -4,8 +4,8 @@ import { site } from "../config";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
-// Un máximo de 3 fotos por trabajo: la galería debe mostrar variedad de
-// encargos, no un solo reportaje. Los alt son los que lee Google.
+// Un maximo de 3 fotos por trabajo: la galeria muestra variedad de encargos.
+// 11 trabajos distintos, 8 categorias. Los alt son los que lee Google.
 const works = [
   { src: "preboda-beso.jpg", title: "Preboda — Sesión de pareja", year: "2026", ratio: "2 / 3", size: "",
     alt: "Pareja besándose en unas escaleras de piedra de un pueblo medieval, fotografía de preboda en blanco y negro" },
@@ -17,20 +17,24 @@ const works = [
     alt: "Tarta de quinceañera de tres pisos decorada con mariposas y rosas en tonos lila" },
   { src: "boda-ramo.jpg", title: "Boda — El ramo", year: "2026", ratio: "2 / 3", size: "narrow",
     alt: "Ramo de novia con calas blancas y flores azules con medallón conmemorativo" },
-  { src: "boda2-novia-coche.jpg", title: "Boda — La llegada", year: "2026", ratio: "3 / 4", size: "narrow",
-    alt: "Novia sonriendo dentro del coche nupcial con su ramo antes de la ceremonia" },
+  { src: "comunion-retrato.jpg", title: "Comunión — El retrato", year: "2026", ratio: "3 / 4", size: "narrow",
+    alt: "Retrato de niña de primera comunión con vestido de encaje apoyada en un muro de piedra en Vic" },
   { src: "boda-emocion.jpg", title: "Boda — La emoción", year: "2026", ratio: "2 / 3", size: "narrow",
     alt: "Novia emocionada sosteniendo una fotografía familiar durante la ceremonia, en blanco y negro" },
-  { src: "deco-centro.jpg", title: "Eventos — Decoración", year: "2026", ratio: "5 / 8", size: "",
-    alt: "Centro de mesa con rosas azules y hortensias en una celebración de quince años" },
+  { src: "familia-sesion.jpg", title: "Familia — Sesión en exteriores", year: "2026", ratio: "3 / 2", size: "wide",
+    alt: "Retrato de familia numerosa posando entre árboles durante una sesión fotográfica al aire libre" },
+  { src: "retrato-arbol.jpg", title: "Retratos — Sesión en el bosque", year: "2026", ratio: "3 / 4", size: "narrow",
+    alt: "Retrato de joven junto al tronco de un pino durante una sesión fotográfica en el bosque" },
   { src: "preboda-porche.jpg", title: "Preboda — La masía", year: "2026", ratio: "3 / 5", size: "",
     alt: "Pareja abrazada bajo el porche de madera de una masía en Osona durante su preboda" },
+  { src: "comunion-rosario.jpg", title: "Comunión — El detalle", year: "2026", ratio: "2 / 3", size: "",
+    alt: "Rosario de madera sobre un misal abierto durante una primera comunión" },
   { src: "evento-postres.jpg", title: "Eventos — Mesa dulce", year: "2026", ratio: "3 / 2", size: "wide",
     alt: "Mesa dulce con pasteles y dulces decorados en tonos azules para una fiesta de quince" },
-  { src: "quince-zapatos.jpg", title: "Quinceañera — El cambio de zapatos", year: "2026", ratio: "2 / 3", size: "narrow",
-    alt: "Detalle del tradicional cambio de zapatos en una fiesta de quinceañera" },
-  { src: "food-burger.jpg", title: "Gastronomía — Carta", year: "2026", ratio: "3 / 5", size: "",
-    alt: "Hamburguesa gourmet con guacamole y nachos fotografiada para la carta de un restaurante" },
+  { src: "quince-retrato.jpg", title: "Quinceañera — El retrato", year: "2026", ratio: "1 / 1", size: "narrow",
+    alt: "Quinceañera con vestido lila sentada ante la decoración de su fiesta de quince años" },
+  { src: "food-pollo.jpg", title: "Gastronomía — Carta", year: "2026", ratio: "3 / 5", size: "",
+    alt: "Tiras de pollo crujiente con salsas fotografiadas para la carta de un restaurante" },
   { src: "chef-plato.jpg", title: "Gastronomía — El chef", year: "2026", ratio: "2 / 3", size: "",
     alt: "Chef presentando un plato de salmón con aguacate en la cocina de un restaurante" },
   { src: "boda2-camino.jpg", title: "Boda — El camino", year: "2026", ratio: "2 / 3", size: "narrow",
