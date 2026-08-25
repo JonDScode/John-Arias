@@ -286,7 +286,8 @@ h1, h2, h3 {
 /* ---------- Video ---------- */
 .video-grid {
   display: grid;
-  grid-template-columns: 1fr 1.6fr;
+  grid-template-columns: repeat(2, minmax(0, 330px));
+  justify-content: center;
   gap: var(--gutter);
   align-items: start;
 }
