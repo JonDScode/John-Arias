@@ -173,6 +173,31 @@ h1, h2, h3 {
   color: var(--ink-faint);
 }
 
+/* logo grande en el hueco derecho del hero — solo escritorio */
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: var(--gutter);
+}
+
+.hero-logo {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  justify-self: end;
+}
+
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-logo {
+    display: none;
+  }
+}
+
 /* ---------- Work grid ---------- */
 .section {
   padding-block: var(--space-section);
