@@ -333,6 +333,11 @@ h1, h2, h3 {
   margin-top: clamp(2.5rem, 9vw, 7rem);
 }
 
+.video-grid figure:only-of-type {
+  grid-column: 5 / span 4;
+  margin-top: 0;
+}
+
 .video-grid figure {
   margin: 0;
   background: var(--bg-raised);
