@@ -8,7 +8,7 @@ export const eventos = [
   { slug: "preboda-mirador", cat: "Preboda", titulo: "Preboda — Mirador de Osona", n: 3 },
   { slug: "quince-celeste", cat: "Quinceañera", titulo: "Quinceañera — Vestido celeste", n: 8 },
   { slug: "quince-menta", cat: "Quinceañera", titulo: "Quinceañera — Vestido menta", n: 11 },
-  { slug: "quince-esmeralda", cat: "Quinceañera", titulo: "Quinceañera — Sesión en verde", n: 5 },
+  { slug: "quince-esmeralda", cat: "Quinceañera", titulo: "Quinceañera — Sesión en verde", n: 4 },
   { slug: "prequince-urbano", cat: "Pre-quince", titulo: "Pre-quince — Sesión urbana", n: 12 },
   { slug: "prequince-bosque", cat: "Pre-quince", titulo: "Pre-quince — En el bosque", n: 8 },
   { slug: "prequince-atardecer", cat: "Pre-quince", titulo: "Pre-quince — Retrato al atardecer", n: 4 },
