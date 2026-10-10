@@ -1,73 +1,13 @@
 ---
 import Base from "../layouts/Base.astro";
 import { site } from "../config";
+import { eventos, portadas } from "../galeria";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
-// Un maximo de 3 fotos por trabajo: la galeria muestra variedad de encargos.
-// 11 trabajos distintos, 8 categorias. Los alt son los que lee Google.
-// Solo fotografia social: bodas, preboda, quinceaneras, pre-quince y comuniones.
-// Sin comida, producto ni decoracion (esos servicios siguen en los textos).
-const works = [
-  { src: "boda-confeti.jpg", title: "Boda — La salida", year: "2026", ratio: "3 / 2", size: "wide",
-    alt: "Novios saliendo entre confeti rodeados de invitados tras la ceremonia de boda" },
-  { src: "quince-celeste.jpg", title: "Quinceañera — Vestido celeste", year: "2026", ratio: "2 / 3", size: "narrow",
-    alt: "Quinceañera con vestido celeste y corona posando a contraluz en un jardín" },
-  { src: "prequince-jersey.jpg", title: "Pre-quince — Sesión previa", year: "2026", ratio: "2 / 3", size: "",
-    alt: "Chica en sesión de pre-quince con jersey blanco apoyada en un muro de piedra" },
-  { src: "comunion-rezo.jpg", title: "Comunión — El altar", year: "2026", ratio: "2 / 3", size: "",
-    alt: "Niña de comunión rezando ante el altar dorado de una iglesia" },
-  { src: "preboda-beso.jpg", title: "Preboda — Sesión de pareja", year: "2026", ratio: "2 / 3", size: "",
-    alt: "Pareja besándose en unas escaleras de piedra de un pueblo medieval, fotografía de preboda en blanco y negro" },
-  { src: "boda3-pareja.jpg", title: "Boda — Los novios", year: "2026", ratio: "5 / 8", size: "",
-    alt: "Novios abrazados con el ramo de flores azules en el jardín de la finca" },
-  { src: "familia-sesion.jpg", title: "Familia — Sesión en exteriores", year: "2026", ratio: "3 / 2", size: "wide",
-    alt: "Retrato de familia numerosa posando entre árboles durante una sesión fotográfica al aire libre" },
-  { src: "quince-verde.jpg", title: "Quinceañera — Vestido verde", year: "2026", ratio: "2 / 3", size: "narrow",
-    alt: "Quinceañera con vestido verde esmeralda sonriendo apoyada en una barandilla" },
-  { src: "boda-anillos.jpg", title: "Boda — Los anillos", year: "2026", ratio: "1 / 1", size: "narrow",
-    alt: "Primer plano del intercambio de anillos entre los novios durante la ceremonia" },
-  { src: "prequince-urbano.jpg", title: "Pre-quince — En la ciudad", year: "2026", ratio: "2 / 3", size: "narrow",
-    alt: "Retrato de pre-quince con camisa azul en un entorno urbano de Vic" },
-  { src: "comunion-retrato.jpg", title: "Comunión — El retrato", year: "2026", ratio: "3 / 4", size: "narrow",
-    alt: "Retrato de niña de primera comunión con vestido de encaje apoyada en un muro de piedra en Vic" },
-  { src: "quince-menta.jpg", title: "Quinceañera — Vestido menta", year: "2026", ratio: "2 / 3", size: "",
-    alt: "Quinceañera con vestido color menta girando entre la vegetación al anochecer" },
-  { src: "boda-manteo.jpg", title: "Boda — El manteo", year: "2026", ratio: "2 / 3", size: "",
-    alt: "Novia levantada en volandas por los invitados durante la celebración de la boda" },
-  { src: "retrato-arbol.jpg", title: "Retratos — Sesión en el bosque", year: "2026", ratio: "3 / 4", size: "narrow",
-    alt: "Retrato de joven junto al tronco de un pino durante una sesión fotográfica en el bosque" },
-  { src: "preboda-callejon.jpg", title: "Preboda — El pueblo", year: "2026", ratio: "2 / 3", size: "narrow",
-    alt: "Pareja al fondo de un callejón de piedra durante su sesión de preboda en un pueblo de Osona" },
-  { src: "quince-globos.jpg", title: "Quinceañera — La fiesta", year: "2026", ratio: "2 / 3", size: "narrow",
-    alt: "Quinceañera posando ante una decoración de globos dorados en su fiesta de quince años" },
-  { src: "boda-ramo.jpg", title: "Boda — El ramo", year: "2026", ratio: "2 / 3", size: "narrow",
-    alt: "Ramo de novia con calas blancas y flores azules con medallón conmemorativo" },
-  { src: "prequince-bosque.jpg", title: "Pre-quince — El bosque", year: "2026", ratio: "2 / 3", size: "narrow",
-    alt: "Sesión de pre-quince en un bosque de pinos con luz natural" },
-  { src: "comunion-rosario.jpg", title: "Comunión — El detalle", year: "2026", ratio: "2 / 3", size: "narrow",
-    alt: "Rosario de madera sobre un misal abierto durante una primera comunión" },
-  { src: "boda4-interior.jpg", title: "Boda — El baile", year: "2026", ratio: "2 / 3", size: "",
-    alt: "Novios con las frentes juntas bajo la lámpara del salón durante el banquete" },
-  { src: "quince-azul.jpg", title: "Quinceañera — Vestido azul", year: "2026", ratio: "2 / 3", size: "",
-    alt: "Quinceañera con vestido azul rey y ramo posando en un campo abierto" },
-  { src: "prequince-hojas.jpg", title: "Pre-quince — Luz dorada", year: "2026", ratio: "2 / 3", size: "narrow",
-    alt: "Retrato de pre-quince con blusa blanca entre hojas con luz dorada de atardecer" },
-  { src: "boda-manos.jpg", title: "Boda — Las alianzas", year: "2026", ratio: "2 / 3", size: "narrow",
-    alt: "Manos de los novios con las alianzas sobre unas flores rosas" },
-  { src: "quince-retrato.jpg", title: "Quinceañera — El retrato", year: "2026", ratio: "1 / 1", size: "narrow",
-    alt: "Quinceañera con vestido lila sentada ante la decoración de su fiesta de quince años" },
-  { src: "preboda-porche.jpg", title: "Preboda — La masía", year: "2026", ratio: "3 / 5", size: "",
-    alt: "Pareja abrazada bajo el porche de madera de una masía en Osona durante su preboda" },
-  { src: "comunion-nino.jpg", title: "Comunión — El retrato", year: "2026", ratio: "2 / 3", size: "",
-    alt: "Niño de primera comunión con chaqueta azul caminando por una avenida arbolada" },
-  { src: "boda-emocion.jpg", title: "Boda — La emoción", year: "2026", ratio: "2 / 3", size: "narrow",
-    alt: "Novia emocionada sosteniendo una fotografía familiar durante la ceremonia, en blanco y negro" },
-  { src: "preboda-rostros.jpg", title: "Preboda — Complicidad", year: "2026", ratio: "5 / 8", size: "narrow",
-    alt: "Retrato cercano de una pareja riendo con las frentes juntas durante su sesión de preboda" },
-  { src: "boda2-camino.jpg", title: "Boda — El camino", year: "2026", ratio: "2 / 3", size: "narrow",
-    alt: "Novio caminando hacia la ceremonia por un sendero arbolado, en blanco y negro" },
-];
+// La reticula muestra una portada por trabajo; al tocarla se abre el carrusel
+// con todas las fotos de ese evento (public/galeria/<slug>/01.jpg..NN.jpg).
+const porSlug = Object.fromEntries(eventos.map((e) => [e.slug, e]));
 
 const servicios = [
   { nombre: "Bodas", texto: "Cobertura completa del día: preparativos, ceremonia, banquete y fiesta. Fotografía y vídeo, con reportaje entregado en galería online privada." },
@@ -104,8 +44,8 @@ const servicios = [
   <div class="filmstrip" aria-hidden="true">
     <div class="filmstrip-track">
       {
-        [...works, ...works].map((w) => (
-          <img src={`${base}/photos/${w.src}`} alt="" loading="lazy" />
+        [...portadas, ...portadas].map((p) => (
+          <img src={`${base}/portadas/${p.img}`} alt="" loading="lazy" />
         ))
       }
     </div>
@@ -119,22 +59,30 @@ const servicios = [
       </div>
       <div class="work-grid">
         {
-          works.map((w) => (
-            <a class={`work-item reveal ${w.size}`} href="#trabajo">
-              <figure>
-                <img
-                  src={`${base}/photos/${w.src}`}
-                  alt={w.alt}
-                  loading="lazy"
-                  style={`--ratio: ${w.ratio}`}
-                />
-                <figcaption>
-                  <span>{w.title}</span>
-                  <span>{w.year}</span>
-                </figcaption>
-              </figure>
-            </a>
-          ))
+          portadas.map((p) => {
+            const ev = porSlug[p.slug];
+            return (
+              <button
+                class={`work-item reveal ${p.size}`}
+                type="button"
+                data-galeria={p.slug}
+                aria-label={`Ver las ${ev.n} fotos de ${ev.titulo}`}
+              >
+                <figure>
+                  <img
+                    src={`${base}/portadas/${p.img}`}
+                    alt={p.alt}
+                    loading="lazy"
+                    style={`--ratio: ${p.ratio}`}
+                  />
+                  <figcaption>
+                    <span>{ev.titulo}</span>
+                    <span>{ev.n} fotos</span>
+                  </figcaption>
+                </figure>
+              </button>
+            );
+          })
         }
       </div>
     </div>
@@ -271,4 +219,25 @@ const servicios = [
       </form>
     </div>
   </section>
+
+  {
+    eventos.map((ev) => (
+      <dialog class="lightbox" id={`lb-${ev.slug}`} aria-label={ev.titulo}>
+        <div class="lb-bar">
+          <span class="lb-titulo">{ev.titulo}</span>
+          <span class="lb-contador">1 / {ev.n}</span>
+          <button type="button" class="lb-cerrar" aria-label="Cerrar">&#215;</button>
+        </div>
+        <div
+          class="lb-track"
+          data-src={`${base}/galeria/${ev.slug}`}
+          data-n={ev.n}
+          data-titulo={ev.titulo}
+        >
+        </div>
+        <button type="button" class="lb-nav lb-prev" aria-label="Anterior">&#8249;</button>
+        <button type="button" class="lb-nav lb-next" aria-label="Siguiente">&#8250;</button>
+      </dialog>
+    ))
+  }
 </Base>
