@@ -1,18 +1,20 @@
 // Generado a partir de la carpeta de fotos que entrego el cliente.
-// Cada evento es un trabajo real; sus fotos viven en public/galeria/<slug>/01.jpg..NN.jpg
+// Un evento = un trabajo = las mismas personas; sus fotos viven en
+// public/galeria/<slug>/01.jpg..NN.jpg
 export const eventos = [
   { slug: "boda-finca", cat: "Boda", titulo: "Boda — Finca en Osona", n: 32 },
   { slug: "boda-jardin", cat: "Boda", titulo: "Boda — Ceremonia en el jardín", n: 5 },
-  { slug: "preboda-pueblo", cat: "Preboda", titulo: "Preboda — Pueblo medieval", n: 8 },
-  { slug: "preboda-campo", cat: "Preboda", titulo: "Preboda — Entre montañas", n: 5 },
+  { slug: "preboda-pueblo", cat: "Preboda", titulo: "Preboda — Pueblo medieval", n: 10 },
+  { slug: "preboda-mirador", cat: "Preboda", titulo: "Preboda — Mirador de Osona", n: 3 },
   { slug: "quince-celeste", cat: "Quinceañera", titulo: "Quinceañera — Vestido celeste", n: 8 },
-  { slug: "quince-menta", cat: "Quinceañera", titulo: "Quinceañera — Vestido menta", n: 12 },
-  { slug: "quince-esmeralda", cat: "Quinceañera", titulo: "Quinceañera — Sesión en verde", n: 4 },
+  { slug: "quince-menta", cat: "Quinceañera", titulo: "Quinceañera — Vestido menta", n: 11 },
+  { slug: "quince-esmeralda", cat: "Quinceañera", titulo: "Quinceañera — Sesión en verde", n: 5 },
   { slug: "prequince-urbano", cat: "Pre-quince", titulo: "Pre-quince — Sesión urbana", n: 12 },
-  { slug: "prequince-bosque", cat: "Pre-quince", titulo: "Pre-quince — Bosque y ciudad", n: 13 },
-  { slug: "comunion-vic", cat: "Comunión", titulo: "Comunión — Calles de Vic", n: 10 },
-  { slug: "comunion-ceremonia", cat: "Comunión", titulo: "Comunión — La ceremonia", n: 9 },
-  { slug: "comunion-iglesia", cat: "Comunión", titulo: "Comunión — En la iglesia", n: 7 },
+  { slug: "prequince-bosque", cat: "Pre-quince", titulo: "Pre-quince — En el bosque", n: 8 },
+  { slug: "prequince-atardecer", cat: "Pre-quince", titulo: "Pre-quince — Retrato al atardecer", n: 4 },
+  { slug: "comunion-vic", cat: "Comunión", titulo: "Comunión — Calles de Vic", n: 9 },
+  { slug: "comunion-ceremonia", cat: "Comunión", titulo: "Comunión — La ceremonia", n: 7 },
+  { slug: "comunion-iglesia", cat: "Comunión", titulo: "Comunión — En la iglesia", n: 5 },
   { slug: "comunion-retrato", cat: "Comunión", titulo: "Comunión — Retrato en exteriores", n: 8 },
 ];
 
@@ -38,7 +40,7 @@ export const portadas = [
     alt: "Sesión de pre-quince con camisa azul en un parque de Vic" },
   { img: "10.jpg", slug: "boda-jardin", size: "narrow", ratio: "577 / 900",
     alt: "Novios abrazados con el ramo de flores azules en el jardín" },
-  { img: "11.jpg", slug: "preboda-campo", size: "wide", ratio: "900 / 600",
+  { img: "11.jpg", slug: "preboda-mirador", size: "wide", ratio: "900 / 600",
     alt: "Pareja riendo con las montañas de Osona al fondo durante su sesión de preboda" },
   { img: "12.jpg", slug: "comunion-ceremonia", size: "", ratio: "600 / 900",
     alt: "Niña de comunión rezando con corona y velo de encaje" },
@@ -48,6 +50,6 @@ export const portadas = [
     alt: "Niño de primera comunión caminando por una avenida arbolada de Vic" },
   { img: "15.jpg", slug: "quince-menta", size: "narrow", ratio: "600 / 900",
     alt: "Quinceañera con vestido menta ante una decoración de globos dorados" },
-  { img: "16.jpg", slug: "prequince-bosque", size: "narrow", ratio: "600 / 900",
-    alt: "Retrato de pre-quince entre las hojas con luz de atardecer" },
+  { img: "16.jpg", slug: "prequince-atardecer", size: "narrow", ratio: "600 / 900",
+    alt: "Retrato de pre-quince de perfil contra un muro de piedra a última hora de la tarde" },
 ];
