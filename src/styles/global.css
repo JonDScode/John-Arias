@@ -147,7 +147,7 @@ h1, h2, h3 {
 }
 
 .hero {
-  min-height: 68svh;
+  min-height: 56svh;
   display: grid;
   align-content: center;
   padding-top: 6rem;
@@ -210,11 +210,19 @@ h1, h2, h3 {
   border-top: 1px solid var(--line);
 }
 
+/* Sin filmstrip, la galeria va pegada al hero: con el aire normal de
+   seccion las fotos caian fuera de la primera pantalla.
+   Ojo: .section:first-of-type apunta al hero, que tambien es <section>. */
+#trabajo {
+  padding-block-start: clamp(2rem, 4vw, 3.5rem);
+  border-top: 0;
+}
+
 .section-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 3.5rem;
+  margin-bottom: 2.4rem;
 }
 
 .section-head h2 {
@@ -281,47 +289,6 @@ h1, h2, h3 {
   .work-item.wide,
   .work-item.narrow {
     grid-column: span 6;
-  }
-}
-
-/* ---------- Filmstrip (carrusel) ---------- */
-.filmstrip {
-  overflow: hidden;
-  border-block: 1px solid var(--line);
-  background: var(--bg-raised);
-}
-
-.filmstrip-track {
-  display: flex;
-  gap: 4px;
-  width: max-content;
-}
-
-.filmstrip img {
-  height: clamp(120px, 18vw, 220px);
-  width: auto;
-  display: block;
-  filter: grayscale(35%);
-  transition: filter 0.3s ease;
-}
-
-.filmstrip img:hover {
-  filter: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .filmstrip-track {
-    animation: filmstrip-scroll 60s linear infinite;
-  }
-
-  .filmstrip:hover .filmstrip-track {
-    animation-play-state: paused;
-  }
-
-  @keyframes filmstrip-scroll {
-    to {
-      transform: translateX(-50%);
-    }
   }
 }
 

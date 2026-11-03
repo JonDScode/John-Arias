@@ -8,9 +8,9 @@ export const site = {
   url: "https://johnarias.com",
   base: "",
 
-  // Cambiar a false cuando el sitio esté listo para aparecer en Google.
-  // Mientras sea true, ningún buscador indexará la página.
-  enRevision: true,
+  // En true, ningún buscador indexa la página. Se desactivó el 2026-11-03,
+  // cuando John publicó el dominio en su ficha de Google y en Instagram.
+  enRevision: false,
 
   descripcion:
     "Fotógrafo y videógrafo en Vic, Barcelona. Bodas, quinceañeras, comuniones, retratos, gastronomía y fotografía de producto. Más de una década creando recuerdos.",
