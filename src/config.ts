@@ -26,15 +26,41 @@ export const site = {
   lon: 2.2545,
 
   instagram: "https://www.instagram.com/johnarias80/",
-  // Enlace publico del perfil de Google Business (el de "compartir").
-  // Vacio = no se muestra el enlace "ver todas las reseñas".
-  googleBusiness: "",
+  // Ficha de Google con las reseñas (5,0 de 9). Ojo: hay una segunda ficha
+  // duplicada, "John Arias Fotografia y Video", sin reseñas ni web.
+  googleBusiness: "https://maps.google.com/?cid=13325104204672320476",
   galerias: "https://johnarias.pixieset.com/",
 
-  // Reseñas del perfil de Google, copiadas a mano. La seccion no se
-  // renderiza mientras este vacio. Sin schema Review: Google no admite
-  // marcar reseñas traidas de otra plataforma.
-  resenas: [] as { autor: string; estrellas: number; texto: string }[],
+  // Reseñas de la ficha de Google, literales. Las largas van cortadas por
+  // el final con puntos suspensivos, nunca por dentro: ni una palabra
+  // cambiada ni reordenada. Sin schema Review: Google no admite marcar
+  // reseñas traidas de otra plataforma.
+  resenas: [
+    {
+      autor: "R. R.",
+      estrellas: 5,
+      texto:
+        "No podríamos estar más contentos con el trabajo de nuestro fotógrafo de boda. El servicio fue excelente de principio a fin y el trato con él fue inmejorable: cercano, profesional y siempre dispuesto a ayudarnos…",
+    },
+    {
+      autor: "Sofía Peña",
+      estrellas: 5,
+      texto:
+        "No puedo estar más feliz con el resultado de las fotos de mis XV años. Desde el primer momento me hizo sentir muy cómoda y tranquila, algo que para mí era muy importante porque quería disfrutar de ese día sin preocuparme por nada…",
+    },
+    {
+      autor: "Cristian Muñoz",
+      estrellas: 5,
+      texto:
+        "Tuvimos la oportunidad de contar con su servicio para los 15 años de nuestra hija y fue muy profesional, el compromiso, la responsabilidad y el asesoramiento de inicio a fin. Muchas gracias por todo.",
+    },
+    {
+      autor: "Jonathan Peña Zapata",
+      estrellas: 5,
+      texto:
+        "Gracias por hacer parte de un día tan importante para nuestra familia. Nos encantó el resultado de las fotos, quedaron espectaculares. Se nota el amor y la dedicación que le pones a tu trabajo…",
+    },
+  ] as { autor: string; estrellas: number; texto: string }[],
 
   servicios: [
     "Fotografía de bodas",

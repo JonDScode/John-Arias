@@ -37,7 +37,7 @@ const schema = {
     longitude: site.lon,
   },
   areaServed: site.zonas.map((z) => ({ "@type": "Place", name: z })),
-  sameAs: [site.instagram, site.galerias],
+  sameAs: [site.instagram, site.galerias, site.googleBusiness].filter(Boolean),
   founder: { "@type": "Person", name: "John Arias" },
   knowsLanguage: ["es", "ca"],
   hasOfferCatalog: {
