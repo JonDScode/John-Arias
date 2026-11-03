@@ -37,12 +37,6 @@ export const site = {
   // reseñas traidas de otra plataforma.
   resenas: [
     {
-      autor: "R. R.",
-      estrellas: 5,
-      texto:
-        "No podríamos estar más contentos con el trabajo de nuestro fotógrafo de boda. El servicio fue excelente de principio a fin y el trato con él fue inmejorable: cercano, profesional y siempre dispuesto a ayudarnos…",
-    },
-    {
       autor: "Sofía Peña",
       estrellas: 5,
       texto:
@@ -59,6 +53,12 @@ export const site = {
       estrellas: 5,
       texto:
         "Gracias por hacer parte de un día tan importante para nuestra familia. Nos encantó el resultado de las fotos, quedaron espectaculares. Se nota el amor y la dedicación que le pones a tu trabajo…",
+    },
+    {
+      autor: "R. R.",
+      estrellas: 5,
+      texto:
+        "No podríamos estar más contentos con el trabajo de nuestro fotógrafo de boda. El servicio fue excelente de principio a fin y el trato con él fue inmejorable: cercano, profesional y siempre dispuesto a ayudarnos…",
     },
   ] as { autor: string; estrellas: number; texto: string }[],
 
