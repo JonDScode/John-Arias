@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import { site } from "../config";
-import { eventos, portadas } from "../galeria";
+import { eventos, portadas, secciones } from "../galeria";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
@@ -57,34 +57,41 @@ const servicios = [
         <h2>Trabajo seleccionado</h2>
         <p class="eyebrow">2024 — 2026</p>
       </div>
-      <div class="work-grid">
-        {
-          portadas.map((p) => {
-            const ev = porSlug[p.slug];
-            return (
-              <button
-                class={`work-item reveal ${p.size}`}
-                type="button"
-                data-galeria={p.slug}
-                aria-label={`Ver las ${ev.n} fotos de ${ev.titulo}`}
-              >
-                <figure>
-                  <img
-                    src={`${base}/portadas/${p.img}`}
-                    alt={p.alt}
-                    loading="lazy"
-                    style={`--ratio: ${p.ratio}`}
-                  />
-                  <figcaption>
-                    <span>{ev.titulo}</span>
-                    <span>{ev.n} fotos</span>
-                  </figcaption>
-                </figure>
-              </button>
-            );
-          })
-        }
-      </div>
+      {
+        secciones.map((sec) => (
+          <div class="work-bloque">
+            <h3 class="work-bloque-titulo reveal">{sec.titulo}</h3>
+            <div class="work-grid">
+              {portadas
+                .filter((p) => porSlug[p.slug].cat === sec.cat)
+                .map((p) => {
+                  const ev = porSlug[p.slug];
+                  return (
+                    <button
+                      class={`work-item reveal ${p.size}`}
+                      type="button"
+                      data-galeria={p.slug}
+                      aria-label={`Ver las ${ev.n} fotos de ${ev.titulo}`}
+                    >
+                      <figure>
+                        <img
+                          src={`${base}/portadas/${p.img}`}
+                          alt={p.alt}
+                          loading="lazy"
+                          style={`--ratio: ${p.ratio}`}
+                        />
+                        <figcaption>
+                          <span>{ev.titulo}</span>
+                          <span>{ev.n} fotos</span>
+                        </figcaption>
+                      </figure>
+                    </button>
+                  );
+                })}
+            </div>
+          </div>
+        ))
+      }
     </div>
   </section>
 
@@ -153,6 +160,37 @@ const servicios = [
       </div>
     </div>
   </section>
+
+  {
+    site.resenas.length > 0 && (
+      <section class="section" id="resenas">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <h2>Lo que dicen</h2>
+            <p class="eyebrow">Reseñas en Google</p>
+          </div>
+          <div class="resenas-grid">
+            {site.resenas.map((r, i) => (
+              <blockquote class="reveal" style={`--reveal-delay: ${(i % 3) * 90}ms`}>
+                <p class="estrellas" aria-label={`${r.estrellas} de 5 estrellas`}>
+                  {"★".repeat(r.estrellas)}
+                </p>
+                <p class="resena-texto">{r.texto}</p>
+                <footer>{r.autor}</footer>
+              </blockquote>
+            ))}
+          </div>
+          {site.googleBusiness && (
+            <p class="resenas-pie">
+              <a href={site.googleBusiness} target="_blank" rel="noopener">
+                Ver todas las reseñas en Google
+              </a>
+            </p>
+          )}
+        </div>
+      </section>
+    )
+  }
 
   <section class="section contact" id="contacto">
     <div class="wrap reveal">

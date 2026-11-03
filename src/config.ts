@@ -26,7 +26,15 @@ export const site = {
   lon: 2.2545,
 
   instagram: "https://www.instagram.com/johnarias80/",
+  // Enlace publico del perfil de Google Business (el de "compartir").
+  // Vacio = no se muestra el enlace "ver todas las reseñas".
+  googleBusiness: "",
   galerias: "https://johnarias.pixieset.com/",
+
+  // Reseñas del perfil de Google, copiadas a mano. La seccion no se
+  // renderiza mientras este vacio. Sin schema Review: Google no admite
+  // marcar reseñas traidas de otra plataforma.
+  resenas: [] as { autor: string; estrellas: number; texto: string }[],
 
   servicios: [
     "Fotografía de bodas",
